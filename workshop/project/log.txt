@@ -1,0 +1,4 @@
+Database and table initialized successfully.
+Starting REST thread
+Starting MQTT thread
+Failed to connect, return code -1

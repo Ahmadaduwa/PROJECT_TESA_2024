@@ -1,0 +1,189 @@
+#include "iot_app.h"
+#include "db_helper.h"
+#include <MQTTClient.h>
+#include <cjson/cJSON.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <pthread.h>
+#include <unistd.h>
+#include "shared.h"
+
+// ข้อมูล MQTT Broker และ Topic
+const char MQTT_BROKER[] = "tcp://broker.emqx.io:1883";
+const char MQTT_CLIENTID[] = "TGR2024_MQTT_CLIENT";
+const char PUBLISH_TOPIC[] = "testtopic/wu/pub";
+const char SUBSCRIBE_TOPIC[] = "testtopic/wu/sub";
+const char DB_OUTCOME_NAME[] = "/home/wupi/Desktop/finalProject5/outcome_data.db";
+
+// ประกาศตัวแปรสถานะการทำงาน
+int is_fft_running = 0;
+int is_running = 0;
+
+// ประกาศตัวแปร thread
+pthread_t fft_thread;
+pthread_t publish_thread;
+
+// ฟังก์ชัน FFT Thread สำหรับการประมวลผลสัญญาณ
+extern void *fft_thr_fcn(void *arg);
+
+// ฟังก์ชัน Publish Thread สำหรับส่งข้อมูล outcome_data.db ทุก 1 วินาที
+void *publish_outcome_data(void *arg)
+{
+    while (is_running)
+    {
+        int size;
+        OutcomeData *data = dbase_query(DB_OUTCOME_NAME, &size);
+
+        if (data != NULL && size > 0)
+        {
+            cJSON *json_array = cJSON_CreateArray();
+
+            for (int i = 0; i < size; i++)
+            {
+                cJSON *item = cJSON_CreateObject();
+                cJSON_AddStringToObject(item, "timestamp", data[i].timestamp);
+                cJSON_AddNumberToObject(item, "frequency", data[i].frequency);
+                cJSON_AddItemToArray(json_array, item);
+            }
+            char *json_payload = cJSON_Print(json_array);
+
+            MQTTClient mqtt_client;
+            MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
+            MQTTClient_message pubmsg = MQTTClient_message_initializer;
+            MQTTClient_deliveryToken token;
+
+            MQTTClient_create(&mqtt_client, MQTT_BROKER, MQTT_CLIENTID, MQTTCLIENT_PERSISTENCE_NONE, NULL);
+            if (MQTTClient_connect(mqtt_client, &conn_opts) == MQTTCLIENT_SUCCESS)
+            {
+                pubmsg.payload = json_payload;
+                pubmsg.payloadlen = strlen(json_payload);
+                pubmsg.qos = 1;
+                pubmsg.retained = 0;
+
+                MQTTClient_publishMessage(mqtt_client, PUBLISH_TOPIC, &pubmsg, &token);
+                MQTTClient_waitForCompletion(mqtt_client, token, 1000);
+                printf("Published outcome data: %s\n", json_payload);
+
+                if (dbase_clear(DB_OUTCOME_NAME) != 0)
+                {
+                    fprintf(stderr, "Failed to clear outcome database\n");
+                }
+                else
+                {
+                    printf("Cleared outcome database\n");
+                }
+
+                MQTTClient_disconnect(mqtt_client, 1000);
+            }
+            else
+            {
+                fprintf(stderr, "Failed to connect to MQTT broker\n");
+            }
+
+            MQTTClient_destroy(&mqtt_client);
+            cJSON_Delete(json_array);
+            free(json_payload);
+        }
+        else
+        {
+            fprintf(stderr, "Failed to retrieve data from outcome database\n");
+        }
+
+        free(data);
+
+        if (!is_running)
+        {
+            break;
+        }
+        sleep(1);
+    }
+    printf("publish_outcome_data has stopped.\n");
+    return NULL;
+}
+
+// ฟังก์ชันหลักที่จัดการการสมัคร MQTT topic และรับคำสั่ง START หรือ STOP
+void *sub_thr_fcn(void *ptr)
+{
+    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
+    char *topic = (char *)ptr;
+    int rc;
+
+    printf("Starting MQTT subscribe thread\n");
+
+    // ตั้งค่า MQTT Client
+    MQTTClient mqtt_client;
+    MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;
+    MQTTClient_create(&mqtt_client, MQTT_BROKER, MQTT_CLIENTID, MQTTCLIENT_PERSISTENCE_NONE, NULL);
+    conn_opts.keepAliveInterval = 20;
+    conn_opts.cleansession = 1;
+
+    if ((rc = MQTTClient_connect(mqtt_client, &conn_opts)) != MQTTCLIENT_SUCCESS)
+    {
+        printf("Failed to connect, return code %d\n", rc);
+        exit(EXIT_FAILURE);
+    }
+
+    MQTTClient_subscribe(mqtt_client, topic, 0);
+    printf("Subscribed to topic: %s\n", topic);
+
+    while (1)
+    {
+        char *message = NULL;
+        int message_len;
+        MQTTClient_message *received_message = NULL;
+
+        MQTTClient_receive(mqtt_client, &topic, &message_len, &received_message, 1000);
+
+        if (received_message != NULL)
+        {
+            message = (char *)received_message->payload;
+            printf("Received JSON message from MQTT: %s\n", message);
+
+            cJSON *json = cJSON_Parse(message);
+            if (json == NULL)
+            {
+                fprintf(stderr, "Error parsing JSON: Received non-JSON message\n");
+                MQTTClient_freeMessage(&received_message);
+                continue;
+            }
+
+            // จัดการคำสั่ง START และ STOP
+            cJSON *check = cJSON_GetObjectItem(json, "check");
+            if (check && cJSON_IsString(check))
+            {
+                if (strcmp(check->valuestring, "START") == 0)
+                {
+                    if (!is_fft_running && !is_running)
+                    {
+                        is_fft_running = 1;
+                        is_running = 1;
+                        // Start the threads
+                        pthread_create(&fft_thread, NULL, fft_thr_fcn, NULL);
+                        pthread_create(&publish_thread, NULL, publish_outcome_data, NULL);
+                    }
+                }
+                else if (strcmp(check->valuestring, "STOP") == 0)
+                {
+                    // Update the flags to stop threads
+                    is_fft_running = 0;
+                    is_running = 0;
+
+                    // Wait for threads to exit and reset status flags
+                    pthread_join(fft_thread, NULL);
+                    pthread_join(publish_thread, NULL);
+
+                    // Reset the flags after threads have stopped
+                    printf("Stopped fft_thr and publish_outcome_data\n");
+                }
+            }
+
+            cJSON_Delete(json);
+            MQTTClient_freeMessage(&received_message);
+        }
+    }
+
+    MQTTClient_destroy(&mqtt_client);
+    return NULL;
+}

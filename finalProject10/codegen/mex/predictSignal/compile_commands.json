@@ -1,0 +1,98 @@
+[
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   predictSignal_data.c /Fobuild\\win64\\predictSignal_data.obj",
+    "file": "predictSignal_data.c",
+    "output": "build/win64/predictSignal_data.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   rt_nonfinite.c /Fobuild\\win64\\rt_nonfinite.obj",
+    "file": "rt_nonfinite.c",
+    "output": "build/win64/rt_nonfinite.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   predictSignal_initialize.c /Fobuild\\win64\\predictSignal_initialize.obj",
+    "file": "predictSignal_initialize.c",
+    "output": "build/win64/predictSignal_initialize.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   predictSignal_terminate.c /Fobuild\\win64\\predictSignal_terminate.obj",
+    "file": "predictSignal_terminate.c",
+    "output": "build/win64/predictSignal_terminate.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   predictSignal.c /Fobuild\\win64\\predictSignal.obj",
+    "file": "predictSignal.c",
+    "output": "build/win64/predictSignal.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   knnsearch.c /Fobuild\\win64\\knnsearch.obj",
+    "file": "knnsearch.c",
+    "output": "build/win64/knnsearch.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   createkds.c /Fobuild\\win64\\createkds.obj",
+    "file": "createkds.c",
+    "output": "build/win64/createkds.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   indexShapeCheck.c /Fobuild\\win64\\indexShapeCheck.obj",
+    "file": "indexShapeCheck.c",
+    "output": "build/win64/indexShapeCheck.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   interface\\_coder_predictSignal_api.c /Fobuild\\win64\\_coder_predictSignal_api.obj",
+    "file": "interface/_coder_predictSignal_api.c",
+    "output": "build/win64/_coder_predictSignal_api.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   interface\\_coder_predictSignal_mex.c /Fobuild\\win64\\_coder_predictSignal_mex.obj",
+    "file": "interface/_coder_predictSignal_mex.c",
+    "output": "build/win64/_coder_predictSignal_mex.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   eml_int_forloop_overflow_check.c /Fobuild\\win64\\eml_int_forloop_overflow_check.obj",
+    "file": "eml_int_forloop_overflow_check.c",
+    "output": "build/win64/eml_int_forloop_overflow_check.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   sumMatrixIncludeNaN.c /Fobuild\\win64\\sumMatrixIncludeNaN.obj",
+    "file": "sumMatrixIncludeNaN.c",
+    "output": "build/win64/sumMatrixIncludeNaN.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   sort.c /Fobuild\\win64\\sort.obj",
+    "file": "sort.c",
+    "output": "build/win64/sort.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   sortIdx.c /Fobuild\\win64\\sortIdx.obj",
+    "file": "sortIdx.c",
+    "output": "build/win64/sortIdx.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   interface\\_coder_predictSignal_info.c /Fobuild\\win64\\_coder_predictSignal_info.obj",
+    "file": "interface/_coder_predictSignal_info.c",
+    "output": "build/win64/_coder_predictSignal_info.obj"
+  },
+  {
+    "directory": "E:\\Work_Inclass\\Preprocess\\codegen\\mex\\predictSignal",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"E:\\Work_Inclass\\Preprocess\" /I \".\\interface\" /I \"E:\\Program to Writecode\\extern\\include\" /I \".\" -DMODEL=predictSignal_mex   \"E:\\Program to Writecode\\extern\\version\\c_mexapi_version.c\" /Fobuild\\win64\\c_mexapi_version.obj",
+    "file": "E:/Program to Writecode/extern/version/c_mexapi_version.c",
+    "output": "build/win64/c_mexapi_version.obj"
+  }
+]
